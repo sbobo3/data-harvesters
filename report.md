@@ -64,3 +64,41 @@ The farmers market data as it currently is does provide useful information to pe
 // Are there use cases for which the dataset will not be clean enough?
 
 As there are parts of the dataset that predominantly blank, it would be difficult to perform a comprehensive analysis on aspects of farmers markets like goods sold, online presence, and seasonal availability.
+
+## Data Cleansing
+
+// Document the process and result of this phase, both in narrative form along with supplementary information (e.g., which columns were cleaned and what changes were made?).
+
+* Farmers Market Name and Identifiers
+  * No work needs to be done regarding the `FMID` as each record is unique.
+  * No work needs to be done regarding `MarketName` since even though there are instances where a farmers market has a duplicate name, the additional information provided in a record provides enough context to identify the correct farmers market.
+* Online Information
+  * For Facebook, I am removing all invalid instances of Facebook groups using the following GREL and creating a column `Facebook_Link`:
+
+        if(value.contains("facebook.com"), value, "")
+
+  * For Twitter, I am removing all invalid instances of Twitter users using the following GREL and creating a column `Twitter_Link`: 
+
+        if(value.contains("twitter.com"), value, "")
+
+  * For Youtube, I am removing all invalid instances of Youtube users using the following GREL and creating a column `Youtube_Link`: 
+
+        if(value.contains("youtube.com"), value, "")
+
+  * For OtherMedia, I am removing all instances where an invalid website link was provided and created a column OtherMedia_Link:
+
+        if(
+          length(
+            value.find(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/)) 
+          >= 1, 
+          value, "")
+
+* Location Information
+* Seasonal Availability
+* Accepted forms of Payment
+* Type of Goods Sold
+* Record Metadata
+
+// Can you quantify the results of your efforts? Also, provide provenance information from OpenRefine. Pay close attention to what OpenRefine includes and does not include in its operation history!
+
+// If important information is missing in the latter, provide that information in narrative form.
