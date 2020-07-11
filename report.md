@@ -35,7 +35,7 @@ The Farmer's Market data is 8,687 records with 59 columns.  Each record in the d
   * There is a `Location` column that indicates the type of location such as a "Private business parking lot" or "Local government building grounds."
 * Seasonal Availability
   * Although there are four locations for a farmers market to specify date and time, it is rare for a farmers market to specify more than one.  It is worth noting that even the first section of noting what season a farmers market is available is only populated about 65% of the time. This would be an opportunity to work with farmers markets to better populate their availability to better inform the general public of when they are open.
-* Accept forms of Payment
+* Accepted forms of Payment
   * In these columns, `Credit`, `WIC`, `WICcash`, `SFMNP`, and `SNAP`, it indicates what forms of payment a farmers market will accept.  Whether it be a credit card or various government assisted programs.
   * As to be expected, all of these columns are 100% populated.
 * Type of Goods Sold
