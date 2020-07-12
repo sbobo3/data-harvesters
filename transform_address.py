@@ -1,21 +1,16 @@
-# %%
-import re
 import pandas as pd
+import re
 
-# %%
-df = pd.read_csv("data/processed/farmersmarkets_processed.csv", dtype=str)
-df['street'] = str(df['street'])
-df.info()
+df = pd.read_csv("data/processed/farmersmarkets_processed.csv", low_memory=False)
 
-# %%
-df['street'].head()
-
-# %%
 def return_valid_address(address):
-    return re.findall("\d+[ ](?:[A-Za-z0-9.-]+[ ]?)+(?:Avenue|Lane|Road|Boulevard|Drive|Pike|Pk|Street|Ave|Dr|Rd|Blvd|Ln|St)\.?", 
-    str(address))[0]
+    matched_address = re.findall("^(\d+) ?([A-Za-z](?= ))? (.*?) ([^ ]+?) ?((?<= )APT)? ?((?<= )\d*)?$", str(address))
+    if len(matched_address) > 0:
+        single_string = " ".join(matched_address[0]).strip()
+        return ' '.join(single_string.split())
 
-df['street_valid'] = df['street'].apply(lambda x: return_valid_address(x))
+df['street_valid'] = df['street'].apply(return_valid_address)
 
-# %%
-df.head()
+df['full_address'] = df['street_valid'] + ", " + df['city_valid'] + ", " + df["State"] + " " + str(df["zip_valid"]).strip()
+
+df.to_csv("data/processed/farmersmarkets_processed_with_address.csv")
