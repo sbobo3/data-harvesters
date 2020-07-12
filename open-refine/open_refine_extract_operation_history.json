@@ -1,0 +1,365 @@
+[
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Facebook",
+    "expression": "grel:if(value.contains(\"facebook.com\"), value, \"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "Facebook_Link",
+    "columnInsertIndex": 4,
+    "description": "Create column Facebook_Link at index 4 based on column Facebook using expression grel:if(value.contains(\"facebook.com\"), value, \"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Twitter",
+    "expression": "grel:if(value.contains(\"twitter.com\"), value, \"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "Twitter_Link",
+    "columnInsertIndex": 6,
+    "description": "Create column Twitter_Link at index 6 based on column Twitter using expression grel:if(value.contains(\"twitter.com\"), value, \"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Youtube",
+    "expression": "grel:if(value.contains(\"youtube.com\"), value, \"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "Youtube_Link",
+    "columnInsertIndex": 8,
+    "description": "Create column Youtube_Link at index 8 based on column Youtube using expression grel:if(value.contains(\"youtube.com\"), value, \"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "OtherMedia",
+    "expression": "grel:if(\n          length(\n            value.find(/^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\/.*)?$/)) \n          == 1, \n          value, \"\")",
+    "onError": "store-error",
+    "newColumnName": "OtherMedia_Link",
+    "columnInsertIndex": 10,
+    "description": "Create column OtherMedia_Link at index 10 based on column OtherMedia using expression grel:if(\n          length(\n            value.find(/^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\/.*)?$/)) \n          == 1, \n          value, \"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "city",
+    "expression": "grel:if(\n          length(\n            value.find(/[a-zA-Z ]+/))\n          == 1,\n          trim(value), \"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "city_valid",
+    "columnInsertIndex": 13,
+    "description": "Create column city_valid at index 13 based on column city using expression grel:if(\n          length(\n            value.find(/[a-zA-Z ]+/))\n          == 1,\n          trim(value), \"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "County",
+    "expression": "grel:if(\n          length(\n            value.find(/[a-zA-Z ]+/))\n          == 1,\n          trim(value), \"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "County_valid",
+    "columnInsertIndex": 15,
+    "description": "Create column County_valid at index 15 based on column County using expression grel:if(\n          length(\n            value.find(/[a-zA-Z ]+/))\n          == 1,\n          trim(value), \"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "zip",
+    "expression": "grel:if(\n            length(\n              value.find(/(\\b\\d{5}(?:-\\d{4})?\\b)/))\n            == 1,\n            trim(value), \"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "zip_valid",
+    "columnInsertIndex": 18,
+    "description": "Create column zip_valid at index 18 based on column zip using expression grel:if(\n            length(\n              value.find(/(\\b\\d{5}(?:-\\d{4})?\\b)/))\n            == 1,\n            trim(value), \"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Season1Date",
+    "expression": "grel:if(\n            length(\n              value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/))\n            == 2,\n            value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/).get(1), \"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "Season1EndDate",
+    "columnInsertIndex": 20,
+    "description": "Create column Season1EndDate at index 20 based on column Season1Date using expression grel:if(\n            length(\n              value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/))\n            == 2,\n            value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/).get(1), \"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Season1Date",
+    "expression": "grel:if(\n            length(\n              value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/))\n            == 2,\n            value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/).get(0), \"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "Season1StartDate",
+    "columnInsertIndex": 20,
+    "description": "Create column Season1StartDate at index 20 based on column Season1Date using expression grel:if(\n            length(\n              value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/))\n            == 2,\n            value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/).get(0), \"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Season2Date",
+    "expression": "grel:if(\n            length(\n              value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/))\n            == 2,\n            value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/).get(1), \"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "Season2EndDate",
+    "columnInsertIndex": 24,
+    "description": "Create column Season2EndDate at index 24 based on column Season2Date using expression grel:if(\n            length(\n              value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/))\n            == 2,\n            value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/).get(1), \"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Season2Date",
+    "expression": "grel:if(\n            length(\n              value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/))\n            == 2,\n            value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/).get(0), \"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "Season2StartDate",
+    "columnInsertIndex": 24,
+    "description": "Create column Season2StartDate at index 24 based on column Season2Date using expression grel:if(\n            length(\n              value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/))\n            == 2,\n            value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/).get(0), \"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Season3Date",
+    "expression": "grel:if(\n            length(\n              value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/))\n            == 2,\n            value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/).get(1), \"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "Season3EndDate",
+    "columnInsertIndex": 28,
+    "description": "Create column Season3EndDate at index 28 based on column Season3Date using expression grel:if(\n            length(\n              value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/))\n            == 2,\n            value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/).get(1), \"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Season3Date",
+    "expression": "grel:if(\n            length(\n              value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/))\n            == 2,\n            value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/).get(0), \"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "Season3StartDate",
+    "columnInsertIndex": 28,
+    "description": "Create column Season3StartDate at index 28 based on column Season3Date using expression grel:if(\n            length(\n              value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/))\n            == 2,\n            value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/).get(0), \"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Season4Date",
+    "expression": "grel:if(\n            length(\n              value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/))\n            == 2,\n            value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/).get(1), \"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "Season4EndDate",
+    "columnInsertIndex": 32,
+    "description": "Create column Season4EndDate at index 32 based on column Season4Date using expression grel:if(\n            length(\n              value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/))\n            == 2,\n            value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/).get(1), \"\")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Season4Date",
+    "expression": "grel:if(\n            length(\n              value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/))\n            == 2,\n            value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/).get(0), \"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "Season4StartDate",
+    "columnInsertIndex": 32,
+    "description": "Create column Season4StartDate at index 32 based on column Season4Date using expression grel:if(\n            length(\n              value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/))\n            == 2,\n            value.find(/[0,1]?\\d{1}\\/(([0-2]?\\d{1})|([3][0,1]{1}))\\/(([1]{1}[9]{1}[9]{1}\\d{1})|([2-9]{1}\\d{3}))/).get(0), \"\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Season1StartDate",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Season1StartDate using expression value.toDate()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Season1EndDate",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Season1EndDate using expression value.toDate()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Season2StartDate",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Season2StartDate using expression value.toDate()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Season2EndDate",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Season2EndDate using expression value.toDate()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Season3StartDate",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Season3StartDate using expression value.toDate()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Season3EndDate",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Season3EndDate using expression value.toDate()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Season4StartDate",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Season4StartDate using expression value.toDate()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Season4EndDate",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Season4EndDate using expression value.toDate()"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "x",
+    "newColumnName": "longitude",
+    "description": "Rename column x to longitude"
+  },
+  {
+    "op": "core/column-rename",
+    "oldColumnName": "y",
+    "newColumnName": "latitude",
+    "description": "Rename column y to latitude"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "longitude",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column longitude using expression value.toNumber()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "latitude",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column latitude using expression value.toNumber()"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Organic",
+    "expression": "grel:value.replace(\"-\",\"\")",
+    "onError": "set-to-blank",
+    "newColumnName": "Organic_valid",
+    "columnInsertIndex": 44,
+    "description": "Create column Organic_valid at index 44 based on column Organic using expression grel:value.replace(\"-\",\"\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "updateTime",
+    "expression": "value.toDate()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column updateTime using expression value.toDate()"
+  }
+]
