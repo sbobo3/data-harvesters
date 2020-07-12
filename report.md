@@ -98,7 +98,7 @@ As there are parts of the dataset that predominantly blank, it would be difficul
 * Location Information
   * For street, we have created a column `street_valid` that detects instances where a street number and name are included and pulls out the first valid address found.  This will rule out instances where entires such as "Downtown" or "Main Street" were provided.
 
-        value.match(/(\d+[ ](?:[A-Za-z0-9.-]+[ ]?)+(?:Avenue|Lane|Road|Boulevard|Drive|Street|Ave|Dr|Rd|Blvd|Ln|St)\.?/).get(0)
+        value.match(/^\d+\s[A-z.]+\s[A-z]+/).get(0)
 
     * Attempted to use OpenRefine for this and the application continued to freeze on `"Working..."`.  Instead, used Python to accomplish this.  Ideally this would have been done within OpenRefine and included in the task list.
   * For `city`, we created a column `city_valid` that will check for only valid words using the following GREL command:
