@@ -155,6 +155,20 @@ As there are parts of the dataset that predominantly blank, it would be difficul
 * Record Metadata
   * We transformed the `updateTime` to a valid date using `Edit Cells > Common transforms > To date`.
 
+## Workflow Model
+
+// Identifying the key inputs, outputs of your workflow along with the dependencies
+
+The primary input to the workflow is the raw data (`data/raw/farmersmarkets.csv`). A user can manually cleanse the data step-by-step using OpenRefine, however for the sake of reproducability and provenance we consider the OpenRefine operation history a key input, as it will allow others to derive the same processed data set. Finally, we have a Python script to transform addresses (`transform_address.py`). The result of the overall workflow is a cleansed and processed data set (`data/processed/farmersmarkets_processed_with_address.csv`)
+
+The overall cleansing workflow can be visualized using YesWorkflow:
+
+![Overall Workflow](./workflow-model/yesworkflow/OverallWorkflow.png)
+
+The OpenRefine operation history can be exported as a `.csv` file, and visualized using or2ywtool. This tool generates intermediate YesWorkflow data that graphviz turns into an image:
+
+![OpenRefine Workflow](./workflow-model/or2yw/openrefineworkflow.png)
+
 // Can you quantify the results of your efforts? Also, provide provenance information from OpenRefine. Pay close attention to what OpenRefine includes and does not include in its operation history!
 
 // If important information is missing in the latter, provide that information in narrative form.
