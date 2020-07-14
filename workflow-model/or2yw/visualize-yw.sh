@@ -14,6 +14,6 @@ then
 fi
 
 or2yw -i $1 \
-      -o openrefineworkflow.png \
+      -o ./outputs/OpenRefine_Workflow.png \
       -ot png \
       -title "OpenRefine"

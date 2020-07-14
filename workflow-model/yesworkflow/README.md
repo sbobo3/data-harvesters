@@ -2,5 +2,5 @@ Model and visualize the workflows.
 
 ```
 $ yw graph
-$ dot -Tpng OverallWorkflow.gv -o OverallWorkflow.pdf
+$ dot -Tpng Overall_Workflow.gv -o Overall_Workflow.png
 ```
