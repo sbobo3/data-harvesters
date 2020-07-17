@@ -10,6 +10,7 @@ matplotlib = "~=3.2.1"
 pandas = "==1.0.1"
 seaborn = "*"
 or2ywtool = "*"
+black = "==19.3b0"
 
 [dev-packages]
 
