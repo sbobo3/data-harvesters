@@ -104,4 +104,4 @@ df["full_address"] = (
 )
 
 df = df[df_cols]
-df.to_csv("data/processed/farmersmarkets_processed_with_address.csv")
+df.to_csv("data/processed/farmersmarkets_processed_with_address.csv", index=False)
