@@ -69,6 +69,8 @@ As there are parts of the dataset that predominantly blank, it would be difficul
 
 ## Data Cleansing
 
+### Data Cleansing Steps
+
 // Document the process and result of this phase, both in narrative form along with supplementary information (e.g., which columns were cleaned and what changes were made?).
 
 * Farmers Market Name and Identifiers
@@ -155,6 +157,44 @@ As there are parts of the dataset that predominantly blank, it would be difficul
 * Record Metadata
   * We transformed the `updateTime` to a valid date using `Edit Cells > Common transforms > To date`.
 
+### Data Cleansing Quantified
+
 // Can you quantify the results of your efforts? Also, provide provenance information from OpenRefine. Pay close attention to what OpenRefine includes and does not include in its operation history!
+
+| Source_Column | Cleansed_Column  | Source_Column | Cleansed_Column | % Difference | Tool       | Note                                                                                       |
+|---------------|------------------|---------------|-----------------|--------------|------------|--------------------------------------------------------------------------------------------|
+| Organic       | Organic_valid    | 8687          | 3644            | -58.05%      | OpenRefine | Replaced rows with just - with a blank to give a better idea of how complete the column is |
+| street        | street_valid     | 8397          | 4244            | -49.46%      | Python     | Used regex to only include valid addresses                                                 |
+| OtherMedia    | OtherMedia_Link  | 718           | 460             | -35.93%      | OpenRefine | Removed invalid website URLs                                                               |
+| Youtube       | Youtube_Link     | 171           | 123             | -28.07%      | OpenRefine | Removed non-youtube URLS                                                                   |
+| Twitter       | Twitter_Link     | 1008          | 761             | -24.50%      | OpenRefine | Removed non-twitter URLS                                                                   |
+| Facebook      | Facebook_Link    | 3929          | 3399            | -13.49%      | OpenRefine | Removed non-facebook URLs                                                                  |
+| city          | city_valid       | 8647          | 8451            | -2.27%       | OpenRefine | Used regex to only include rows that had words                                             |
+| County        | County_valid     | 8172          | 8007            | -2.02%       | OpenRefine | Used regex to only include rows that had words                                             |
+| zip           | zip_valid        | 7742          | 7724            | -0.23%       | OpenRefine | Only included numbers with 5 digits                                                        |
+| x             | longitude        | 8658          | 8658            | 0.00%        | OpenRefine | Converted to number                                                                        |
+| y             | latitude         | 8658          | 8658            | 0.00%        | OpenRefine | Converted to number                                                                        |
+| updateTime    | n/a              | 8687          | 8687            | 0.00%        | OpenRefine | Changed to a valid date                                                                    |
+| FMID          | n/a              | 8687          | 8687            | n/a          | n/a        | No change                                                                                  |
+| MarketName    | n/a              | 8687          | 8687            | n/a          | n/a        | No change                                                                                  |
+| Website       | n/a              | 5212          | 5212            | n/a          | n/a        | No change                                                                                  |
+| State         | n/a              | 8687          | 8687            | n/a          | n/a        | No Changes necessary                                                                       |
+| n/a           | full_address     | n/a           | 3844            | n/a          | Python     | Constructed a full address for a Farmers Market                                            |
+| Season1Date   | n/a              | 5479          | n/a             | n/a          | n/a        | No Change                                                                                  |
+| n/a           | Season1StartDate | n/a           | 409             | n/a          | OpenRefine | Extracted the first valid date from the Season1Date                                        |
+| n/a           | Season1EndDate   | n/a           | 409             | n/a          | OpenRefine | Extracted the second valid date from the Season1Date                                       |
+| Season1Time   | n/a              | 5637          | n/a             | n/a          | n/a        | No Change                                                                                  |
+| Season2Date   | n/a              | 449           | n/a             | n/a          | n/a        | No Change                                                                                  |
+| n/a           | Season2StartDate | n/a           | 409             | n/a          | OpenRefine | Extracted the first valid date from the Season2Date                                        |
+| n/a           | Season2EndDate   | n/a           | 409             | n/a          | OpenRefine | Extracted the second valid date from the Season2Date                                       |
+| Season2Time   | n/a              | 437           | n/a             | n/a          | n/a        | No Change                                                                                  |
+| Season3Date   | n/a              | 81            | n/a             | n/a          | n/a        | No Change                                                                                  |
+| n/a           | Season3StartDate | n/a           | 73              | n/a          | OpenRefine | Extracted the first valid date from the Season3Date                                        |
+| n/a           | Season3EndDate   | n/a           | 73              | n/a          | OpenRefine | Extracted the second valid date from the Season3Date                                       |
+| Season3Time   | n/a              | 77            | n/a             | n/a          | n/a        | No Change                                                                                  |
+| Season4Date   | n/a              | 6             | n/a             | n/a          | n/a        | No Change                                                                                  |
+| n/a           | Season4StartDate | n/a           | 5               | n/a          | OpenRefine | Extracted the first valid date from the Season4Date                                        |
+| n/a           | Season4EndDate   | n/a           | 5               | n/a          | OpenRefine | Extracted the second valid date from the Season4Date                                       |
+| Season4Time   | n/a              | 6             | n/a             | n/a          | n/a        | No Change                                                                                  |
 
 // If important information is missing in the latter, provide that information in narrative form.
